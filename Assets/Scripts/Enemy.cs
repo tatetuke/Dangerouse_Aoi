@@ -18,31 +18,23 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (flag)
-        {
-            if (control.index >= 1)
-            {
-                var v = route.points[pointIndex + 1].transform.position - route.points[pointIndex].transform.position;
-                transform.position += v.normalized * speed * Time.deltaTime;
+        if (control.index >= 1) transreport();
+           
+    }
 
-                var pv = transform.position - route.points[pointIndex].transform.position;
-                if (pv.magnitude >= v.magnitude)
-                {
-                    pointIndex++;
-                    if (pointIndex >= route.points.Length - 1)//最後まで到達した
-                    {
-                        flag = false;
+    ///<summary>スプライトを移動させる</summary>
+    private void transreport()
+    {
+        if (pointIndex < route.points.Length - 1)
+        {//最後まで到達していない
+            var v = route.points[pointIndex + 1].transform.position - route.points[pointIndex].transform.position;
+            transform.position += v.normalized * speed * Time.deltaTime;
 
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (control.index == -1)
-            {
-                Destroy(gameObject);
-            }
+            var pv = transform.position - route.points[pointIndex].transform.position;
+            if (pv.magnitude >= v.magnitude) pointIndex++;
         }
     }
 }
+
+
+

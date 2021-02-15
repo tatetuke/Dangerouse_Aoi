@@ -17,10 +17,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         transform.localPosition = Utils.ClampPosition(transform.localPosition);
         input_key();
         transform_player();
-        
+
         
     }
     void input_key()
@@ -34,6 +35,19 @@ public class Player : MonoBehaviour
         {
             shift = true;
         }
+    }
+
+    //被弾したときの処理
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("当たり判定!");
+        hp--;
+        if (hp == 0)
+        {
+            FadeManager.Instance.LoadLevel("GameOverScene", 1.0f);
+
+        }
+
     }
 
     //プレイヤーの移動
