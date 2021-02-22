@@ -18,10 +18,23 @@ public class aoi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Change_Image();
+    }
+
+    /// <summary>
+    /// 葵の画像切り替え
+    /// </summary>
+    public void Change_Image()
+    {
         if (control.index == -1)
         {
-            Destroy(this.gameObject);
+            return;
+            //Destroy(this.gameObject);
         }
-        MainSpriteRenderer.sprite = aoiimage[control.index];
+        if (control.index < aoiimage.Length)
+        {
+            MainSpriteRenderer.sprite = aoiimage[control.index];
+        }
     }
+
 }

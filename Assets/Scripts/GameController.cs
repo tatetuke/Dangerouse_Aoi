@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-
+   
     [SerializeField]
     Text scenarioMessage;
     List<Scenario> scenarios = new List<Scenario>();
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
             {
                 "ここは西洋の町",
                 "ん？",
-                "あれは素早く動くおもり！\n当たると大変だ！",
+                "あれは素早く動くレポート！\n当たると大変だ！",
             }
         };
 
@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
 
     void ExitScenario()
     {
-        scenarioMessage.text = "";
+        scenarioMessage.text = "あれは素早く動くレポート！\n当たると大変だ！";
         index = -1;
         if (string.IsNullOrEmpty(currentScenario.NextScenarioID))
         {
@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
                 (s => s.ScenarioID == currentScenario.NextScenarioID);
             currentScenario = nextScenario;
         }
+        FadeManager.Instance.LoadLevel("GameScene", 1.0f);
     }
 
 }
