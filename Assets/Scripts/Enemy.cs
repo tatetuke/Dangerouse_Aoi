@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameController control;
-    private bool flag = true;
     public float speed;
     public Route route;
     private int pointIndex;

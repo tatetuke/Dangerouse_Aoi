@@ -28,7 +28,8 @@ public class aoi : MonoBehaviour
     {
         if (control.index == -1)
         {
-            Destroy(this.gameObject);
+            return;
+            //Destroy(this.gameObject);
         }
         if (control.index < aoiimage.Length)
         {
